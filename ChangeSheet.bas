@@ -1,21 +1,19 @@
-Attribute VB_Name = "Module1"
 Sub ChangeSheetName()
-Attribute ChangeSheetName.VB_ProcData.VB_Invoke_Func = "b\n14"
 '
 ' ChangeSheetName Macro
 '
-If SearchSheet("ƒV[ƒg•ÒW—p") Then
+If SearchSheet("ã‚·ãƒ¼ãƒˆç·¨é›†ç”¨") Then
     Application.DisplayAlerts = False
-    Worksheets("ƒV[ƒg•ÒW—p").Delete
+    Worksheets("ã‚·ãƒ¼ãƒˆç·¨é›†ç”¨").Delete
     Application.DisplayAlerts = True
 End If
 
 
 Worksheets().Add After:=Worksheets(Worksheets.Count)
-ActiveSheet.name = "ƒV[ƒg•ÒW—p"
-Cells(1, 1) = "Œ»İ‚ÌƒV[ƒg"
-Cells(1, 2) = "•ÏXŒã‚ÌƒV[ƒg"
-Cells(1, 3) = "ƒV[ƒg–¼"
+ActiveSheet.name = "ã‚·ãƒ¼ãƒˆç·¨é›†ç”¨"
+Cells(1, 1) = "ç¾åœ¨ã®ã‚·ãƒ¼ãƒˆ"
+Cells(1, 2) = "å¤‰æ›´å¾Œã®ã‚·ãƒ¼ãƒˆ"
+Cells(1, 3) = "ã‚·ãƒ¼ãƒˆå"
     
 Dim i, u As Long
 u = 2
@@ -30,17 +28,19 @@ Next
     
 ActiveSheet.Buttons.Add(167.5, 4.5, 96, 25.5).Select
 ActiveSheet.Shapes.Range(Array("Button 1")).Select
-Selection.Characters.Text = "•ÏX"
+Selection.Characters.Text = "å¤‰æ›´"
 Selection.OnAction = "PERSONAL.XLSB!DoChange"
 
 End Sub
-Sub DoChange()
+
+Private Sub DoChange()
+
 '
 ' DoChange
 '
     
 Dim ws As Worksheet
-Set ws = Worksheets("ƒV[ƒg•ÒW—p")
+Set ws = Worksheets("ã‚·ãƒ¼ãƒˆç·¨é›†ç”¨")
 
 Dim y, u As Long
 u = 1
@@ -62,7 +62,7 @@ Next
 
 Dim i, v As Long
 v = 1
-For i = 1 To Worksheets.Count
+For i = 2 To Worksheets.Count
      If IsEmpty(ws.Cells(i, 2).Value) = False Then
         Worksheets(v).name = ws.Cells(i, 3)
         v = v + 1
@@ -70,10 +70,11 @@ For i = 1 To Worksheets.Count
 Next
     
 Application.DisplayAlerts = False
-Worksheets("ƒV[ƒg•ÒW—p").Delete
+Worksheets("ã‚·ãƒ¼ãƒˆç·¨é›†ç”¨").Delete
 Application.DisplayAlerts = True
     
 End Sub
+
 Function SearchSheet(ByVal name As String) As Boolean
 
 Dim i As Long
