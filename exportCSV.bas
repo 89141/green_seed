@@ -1,6 +1,4 @@
-Attribute VB_Name = "Module2"
 Sub exportCSV()
-Attribute exportCSV.VB_ProcData.VB_Invoke_Func = " \n14"
 '
 ' exportCSV Macro
 '
@@ -9,9 +7,9 @@ Dim ws As Worksheet
 For Each ws In ActiveWorkbook.Worksheets
  
 Dim csvFile As String
-csvFile = ActiveWorkbook.Path & "\" & ws.Name & ".csv"
+csvFile = ActiveWorkbook.Path & "\" & ws.name & ".csv"
  
-'ADODB.StreamƒIƒuƒWƒFƒNƒg‚ğ¶¬
+'ADODB.Streamã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
 Dim adoSt As Object
 Set adoSt = CreateObject("ADODB.Stream")
  
@@ -50,22 +48,22 @@ With adoSt
  
     Loop
     
-    .Position = 0 'ƒXƒgƒŠ[ƒ€‚ÌˆÊ’u‚ğ0‚É‚·‚é
-    .Type = 1 'ƒf[ƒ^‚Ìí—Ş‚ğƒoƒCƒiƒŠƒf[ƒ^‚É•ÏX
-    .Position = 3 'ƒXƒgƒŠ[ƒ€‚ÌˆÊ’u‚ğ3‚É‚·‚é
+    .Position = 0 'ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ä½ç½®ã‚’0ã«ã™ã‚‹
+    .Type = 1 'ãƒ‡ãƒ¼ã‚¿ã®ç¨®é¡ã‚’ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã«å¤‰æ›´
+    .Position = 3 'ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ä½ç½®ã‚’3ã«ã™ã‚‹
  
-    Dim byteData() As Byte 'ˆêŠi”[—p
-    byteData = .Read 'ƒXƒgƒŠ[ƒ€‚Ì“à—e‚ğˆêŠi”[—p•Ï”‚É•Û‘¶
-    .Close 'ˆê’UƒXƒgƒŠ[ƒ€‚ğ•Â‚¶‚éiƒŠƒZƒbƒgj
+    Dim byteData() As Byte 'ä¸€æ™‚æ ¼ç´ç”¨
+    byteData = .Read 'ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å†…å®¹ã‚’ä¸€æ™‚æ ¼ç´ç”¨å¤‰æ•°ã«ä¿å­˜
+    .Close 'ä¸€æ—¦ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‰ã˜ã‚‹ï¼ˆãƒªã‚»ãƒƒãƒˆï¼‰
  
-    .Open 'ƒXƒgƒŠ[ƒ€‚ğŠJ‚­
-    .Write byteData 'ƒXƒgƒŠ[ƒ€‚ÉˆêŠi”[‚µ‚½ƒf[ƒ^‚ğ—¬‚µ‚Ş
+    .Open 'ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‹ã
+    .Write byteData 'ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«ä¸€æ™‚æ ¼ç´ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’æµã—è¾¼ã‚€
     .SaveToFile csvFile, 2
     .Close
  
 End With
 Next
  
-MsgBox "CSV‚É‘‚«o‚µ‚Ü‚µ‚½"
+MsgBox "CSVã«æ›¸ãå‡ºã—ã¾ã—ãŸ"
  
 End Sub
