@@ -11,6 +11,7 @@ Sub makeComPareBook()
 
     '現在のシートを全選択
     Cells.Select
+    Selection.NumberFormatLocal = "@"
 
     With Selection.Interior
       .Pattern = xlSolid
@@ -31,6 +32,7 @@ Sub makeComPareBook()
     End If
 
     Cells.Select
+    Selection.NumberFormatLocal = "@"
 
     With Selection.Interior
       .Pattern = xlSolid
@@ -41,7 +43,7 @@ Sub makeComPareBook()
     End With
 
     Selection.FormatConditions.Add Type:=xlExpression, Formula1:= _
-    "=A1<>" & ActiveSheet.Previous.Name & "!A1"
+    "=A1<>" & ActiveSheet.Previous.name & "!A1"
     Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
 
     With Selection.FormatConditions(1).Interior
@@ -67,3 +69,4 @@ Sub makeComPareBook()
   Next i
 
   End Sub
+
